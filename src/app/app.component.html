@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row my-5" *ngFor="let day of days">
       <div class="col-sm-12 col-xs-12 col-md-6 offset-md-3">
-        <task-group [day]="day"></task-group>
+        <task-group [day]="day" [hideContent]="day != today"></task-group>
       </div>
     </div>
   </div>

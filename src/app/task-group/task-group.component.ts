@@ -12,9 +12,9 @@ import { Day } from '../shared/day.enum';
 export class TaskGroupComponent implements OnInit {
 
   @Input() day: Day = 0;
+  @Input() hideContent: boolean = false;
   public days: String[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   public error: boolean = false;
-  public hideContent: boolean = false;
   public loading: boolean = true;
   public taskCount: number = 0;
   public tasks: Task[] = [];
