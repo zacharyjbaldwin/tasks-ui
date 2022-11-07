@@ -1,0 +1,9 @@
+<main>
+  <div class="container">
+    <div class="row my-3" *ngFor="let day of days">
+      <div class="col-sm-12 col-xs-12 col-md-6 offset-md-3">
+        <task-group [day]="day"></task-group>
+      </div>
+    </div>
+  </div>
+</main>
