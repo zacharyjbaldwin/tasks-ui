@@ -1,6 +1,14 @@
 <main>
   <div class="container">
-    <div class="row my-5" *ngFor="let day of days">
+    <div class="row">
+      <div class="col-md-3 offset-md-3 mt-1">
+        <button class="btn btn-dark full-width" (click)="expandAll()"><i class="fa-solid fa-expand"></i> Expand All</button>
+      </div>
+      <div class="col-md-3 mt-1">
+        <button class="btn btn-dark full-width" (click)="collapseAll()"><i class="fa-solid fa-compress"></i> Collapse All</button>
+      </div>
+    </div>
+    <div class="row my-5" *ngFor="let day of displayDays">
       <div class="col-sm-12 col-xs-12 col-md-6 offset-md-3">
         <task-group [day]="day" [hideContent]="day != today"></task-group>
       </div>

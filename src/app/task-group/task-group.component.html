@@ -1,6 +1,6 @@
 <div>
-  <div class="d-flex justify-content-between align-items-baseline">
-    <h5>{{days[day]}}</h5>
+  <div class="d-flex justify-content-between align-items-center">
+    <h5 (click)="toggleContentHidden()">{{days[day]}}</h5>
     <i class="fa-solid" [ngClass]="{ 'fa-chevron-down': !hideContent, 'fa-chevron-up': hideContent }" (click)="toggleContentHidden()"></i>
   </div>
   <hr>
@@ -18,7 +18,7 @@
         <div *ngIf="taskCount > 0" class="d-flex flex-column">
           <div *ngFor="let task of tasks">
             <div class="d-flex justify-content-between align-items-center">
-              <span class="task-description" [ngClass]="{ 'text-muted': task.completed == true, 'completed': task.completed }" (click)="setTaskStatus(task._id!, !task.completed)">{{ task.description }}</span>
+              <span class="task-description" [ngClass]="{ 'text-muted': task.completed == true, 'completed': task.completed == true, 'not-completed': task.completed == false }" (click)="setTaskStatus(task._id!, !task.completed)">{{ task.description }}</span>
               <i class="fa-solid fa-times" (click)="deleteTask(task._id!)"></i>
             </div>
           </div>
