@@ -8,12 +8,14 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { TaskGroupComponent } from './task-group/task-group.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { TaskGroupItemComponent } from './task-group/task-group-item/task-group-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskGroupComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    TaskGroupItemComponent
   ],
   imports: [
     BrowserModule,

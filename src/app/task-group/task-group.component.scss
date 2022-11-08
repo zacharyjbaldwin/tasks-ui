@@ -8,35 +8,13 @@ h5 {
   cursor: pointer;
 }
 
-.fa-chevron-down, .fa-chevron-up {
-  color: $blue;
-  cursor: pointer;
-  font-size: 24px;
-}
-
-.fa-times {
-  color: $red;
-  cursor: pointer;
-  font-size: 20px;
-  margin: 0px 5.75px;
+.fa-chevron-down,
+.fa-chevron-up {
+    color: $blue;
+    cursor: pointer;
+    font-size: 24px;
 }
 
 .full-width {
   width: 100%;
-}
-
-.task-description {
-  cursor: pointer;
-
-  &:hover {
-    text-decoration: line-through;
-  }
-
-  &.completed {
-    text-decoration: line-through;
-  }
-
-  &.not-completed {
-    font-weight: 500;
-  }
 }

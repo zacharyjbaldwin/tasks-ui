@@ -1,0 +1,42 @@
+@import "../../../colors.scss";
+
+.fa-gear {
+    color: $blue;
+    
+}
+
+.fa-times {
+    color: $red;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 0px 5.75px;
+}
+
+.spinner {
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.task-group-item {
+    min-height: 26px;
+}
+
+.task-description {
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: line-through;
+    }
+
+    &.completed {
+        text-decoration: line-through;
+    }
+
+    &.not-completed {
+        font-weight: 500;
+    }
+}

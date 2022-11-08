@@ -46,28 +46,6 @@ export class TaskGroupComponent implements OnInit {
     });
   }
 
-  public deleteTask(taskId: string): void {
-    this.taskService.deleteTask(taskId).subscribe({
-      next: (response) => {
-        this.getTasks();
-      },
-      error: (error) => {
-        this.toastr.error('Failed to delete task. Please try again later.');
-      }
-    });
-  }
-
-  public setTaskStatus(taskId: string, status: boolean): void {
-    this.taskService.setTaskStatus(taskId, status).subscribe({
-      next: (response) => {
-        this.getTasks();
-      },
-      error: (error) => {
-        this.toastr.error('Failed to update task status. Please try again later.');
-      }
-    });
-  }
-
   addTask(): void {
     const description = window.prompt('Enter task description:');
     if (description != undefined) {

@@ -1,0 +1,8 @@
+
+<div *ngIf="loading" class="task-group-item d-flex justify-content-center align-items-center">
+    <i class="fa-solid fa-gear spinner"></i>
+</div>
+<div *ngIf="!loading" class="task-group-item d-flex justify-content-between align-items-center">
+    <span class="task-description" [ngClass]="{ 'text-muted': task.completed == true, 'completed': task.completed == true, 'not-completed': task.completed == false }" (click)="setTaskStatus(task._id!, !task.completed)">{{ task.description }}</span>
+    <i class="fa-solid fa-times" (click)="deleteTask(task._id!)"></i>
+</div>
