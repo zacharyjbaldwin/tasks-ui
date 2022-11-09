@@ -10,9 +10,9 @@ import { Day } from '../shared/day.enum';
   styleUrls: ['./task-group.component.scss']
 })
 export class TaskGroupComponent implements OnInit {
-
   @Input() day: Day = 0;
   @Input() hideContent: boolean = false;
+
   public days: String[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   public error: boolean = false;
   public loading: boolean = true;

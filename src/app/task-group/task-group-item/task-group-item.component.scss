@@ -2,7 +2,6 @@
 
 .fa-gear {
     color: $blue;
-    
 }
 
 .fa-times {
@@ -14,11 +13,6 @@
 
 .spinner {
     animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
 }
 
 .task-group-item {
@@ -36,4 +30,9 @@
         color: #ccc !important;
         text-decoration: line-through;
     }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

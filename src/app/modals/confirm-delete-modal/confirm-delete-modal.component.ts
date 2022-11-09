@@ -23,5 +23,4 @@ export class ConfirmDeleteModalComponent {
   closeModal() {
     this.modalRef.hide();
   }
-
 }

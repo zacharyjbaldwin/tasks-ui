@@ -42,7 +42,6 @@ export class TaskGroupItemComponent implements OnInit {
         });
       }
     });
-
   }
 
   public setTaskStatus(taskId: string, status: boolean): void {
@@ -58,11 +57,4 @@ export class TaskGroupItemComponent implements OnInit {
       }
     });
   }
-
-  // Left for future use:
-  // doContext(event: Event) {
-  //   event.preventDefault();
-  //   console.log('going to edit this one')
-  // }
-
 }
