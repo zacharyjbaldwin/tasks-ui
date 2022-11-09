@@ -49,13 +49,9 @@ export class TaskGroupComponent implements OnInit {
   addTask(): void {
     const description = window.prompt('Enter task description:');
     if (description != undefined) {
-      this.taskService.addTask(this.day, description).subscribe({
-        next: (response) => {
-          this.getTasks();
-        },
-        error: (error) => {
-          this.toastr.error('Failed to add task. Please try again later.');
-        }
+      this.taskService.addTask(this.day, description.trim()).subscribe({
+        next: () => { this.getTasks(); },
+        error: () => { this.toastr.error('Failed to add task. Please try again later.'); }
       });
     }
   }

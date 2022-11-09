@@ -33,10 +33,7 @@
     }
 
     &.completed {
+        color: #ccc !important;
         text-decoration: line-through;
-    }
-
-    &.not-completed {
-        font-weight: 500;
     }
 }
