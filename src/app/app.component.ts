@@ -15,15 +15,15 @@ export class AppComponent implements OnInit {
   public displayDays: Day[] = [];
 
   ngOnInit(): void {
-    for (let i = this.today; i < this.today + 7; i++ ) {
-      this.displayDays.push(this.days[i % 7]);
+    for (let i = this.today; i < this.today + 7; i++) {
+      this.displayDays.push(this.days[(i + 7) % 7]);
     }
   }
 
   public expandAll(): void {
     this.taskGroups?.forEach(taskGroup => taskGroup.hideContent = false);
   }
-  
+
   public collapseAll(): void {
     this.taskGroups?.forEach(taskGroup => taskGroup.hideContent = true);
   }
