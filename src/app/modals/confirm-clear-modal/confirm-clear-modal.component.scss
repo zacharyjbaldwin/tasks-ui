@@ -1,0 +1,9 @@
+.action-button {
+    width: 100px;
+}
+
+@media (max-width: 768px) {
+    .action-button {
+        width: 100%;
+    }
+}

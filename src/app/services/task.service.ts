@@ -21,11 +21,15 @@ export class TaskService {
       .pipe(map((response) => { return { count: response.count, tasks: response.tasks } }));
   }
 
-  public setTaskStatus(taskId: string, status: boolean) {
-    return this.http.put(`${environment.apiUrl}/api/task/${taskId}`, { completed: status });
+  public updateTask(taskId: string, status: boolean, description: string) {
+    return this.http.put(`${environment.apiUrl}/api/task/${taskId}`, { completed: status, description: description });
   }
 
   public deleteTask(taskId: string) {
     return this.http.delete(`${environment.apiUrl}/api/task/${taskId}`);
+  }
+
+  public clearTasksByDay(day: Day) {
+    return this.http.delete(`${environment.apiUrl}/api/task/day/${day}`);
   }
 }
