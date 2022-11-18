@@ -39,6 +39,11 @@ export class TaskGroupComponent implements OnInit {
     this.hideContent = !this.hideContent;
   }
 
+  public refresh(): void {
+    this.loading = true;
+    this.getTasks();
+  }
+
   public getTasks(): void {
     this.taskService.getTasks(this.day).subscribe({
       next: (response) => {
