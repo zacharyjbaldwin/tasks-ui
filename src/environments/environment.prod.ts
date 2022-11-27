@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://zb-tasks-api.herokuapp.com'
+  apiUrl: 'https://tasks-api-zacharyjbaldwin-com.herokuapp.com'
 };
