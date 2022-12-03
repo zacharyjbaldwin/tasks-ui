@@ -15,6 +15,7 @@ export class TaskGroupComponent implements OnInit {
   @Input() day: Day = 0;
   @Input() hideContent: boolean = false;
 
+  public completedCount: number = 0;
   public days: String[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   public header: String = '';
   public error: boolean = false;
@@ -48,6 +49,7 @@ export class TaskGroupComponent implements OnInit {
     this.taskService.getTasks(this.day).subscribe({
       next: (response) => {
         this.taskCount = response.count;
+        this.completedCount = response.tasks.filter(t => t.completed == true).length;
         this.tasks = response.tasks;
         this.loading = false;
       },

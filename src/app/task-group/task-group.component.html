@@ -1,6 +1,9 @@
 <div>
   <div class="d-flex justify-content-between align-items-center">
-    <h5 (click)="toggleContentHidden()">{{ header }}</h5>
+    <div class="d-flex justify-content-between align-items-baseline" style="gap: 8px;">
+      <h5 (click)="toggleContentHidden()">{{ header }}</h5>
+      <h6 *ngIf="!loading" class="text-muted">({{ completedCount }} / {{ taskCount }})</h6>
+    </div>
     <div class="d-flex justify-content-end align-items-center" style="gap: 16px">
       <div class="btn-group" dropdown [isDisabled]="loading">
         <button class="btn btn-sm btn-light" dropdownToggle>
