@@ -10,9 +10,13 @@ import { TaskGroupComponent } from './task-group/task-group.component';
 export class AppComponent implements OnInit {
   @ViewChildren(TaskGroupComponent) taskGroups?: QueryList<TaskGroupComponent>;
 
-  public today = new Date().getDay() - 1;
   public days: Day[] = [Day.Monday, Day.Tuesday, Day.Wednesday, Day.Thursday, Day.Friday, Day.Saturday, Day.Sunday];
   public displayDays: Day[] = [];
+
+  get today() {
+    let date = new Date().getDay() - 1;
+    return date < 0 ? date += 7 : date;
+  }
 
   ngOnInit(): void {
     for (let i = this.today; i < this.today + 7; i++) {
