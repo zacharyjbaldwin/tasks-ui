@@ -51,7 +51,7 @@ export class TaskGroupComponent implements OnInit {
       next: (response) => {
         this.taskCount = response.count;
         this.completedCount = response.tasks.filter(t => t.completed == true).length;
-        this.completedAll = this.taskCount == this.completedCount;
+        this.completedAll = this.taskCount == this.completedCount && this.taskCount > 0;
         this.tasks = response.tasks;
         this.loading = false;
       },
