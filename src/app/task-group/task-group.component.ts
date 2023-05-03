@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmClearModalComponent } from '../modals/confirm-clear-modal/confirm-clear-modal.component';
 import { Task } from '../models/task.model';
 import { TaskService } from '../services/task.service';
 import { Day } from '../shared/day.enum';
+import { TaskGroupItemComponent } from './task-group-item/task-group-item.component'
 
 @Component({
   selector: 'task-group',
@@ -14,6 +15,7 @@ import { Day } from '../shared/day.enum';
 export class TaskGroupComponent implements OnInit {
   @Input() day: Day = 0;
   @Input() hideContent: boolean = false;
+  @ViewChildren(TaskGroupItemComponent) public taskGroupItems!: QueryList<TaskGroupItemComponent>
 
   public completedAll: boolean = false;
   public completedCount: number = 0;
@@ -63,8 +65,6 @@ export class TaskGroupComponent implements OnInit {
   }
 
   addTask(): void {
-    // this.modal = this.modalService.show(AddTaskModalComponent);
-    
     const description = window.prompt('Enter task description:');
     if (description != undefined) {
       this.taskService.addTask(this.day, description.trim()).subscribe({
@@ -85,6 +85,12 @@ export class TaskGroupComponent implements OnInit {
         error: () => { this.toastr.error('Failed to clear tasks. Please try again later.'); }
       });
     });
+  }
+
+  public markAllComplete(complete: boolean): void {
+    for (let item of this.taskGroupItems) {
+      item.updateTask(item.task._id!, complete, item.task.description);
+    }
   }
 
 }

@@ -12,6 +12,8 @@
         </button>
         <ul *dropdownMenu class="dropdown-menu">
           <li>
+            <a class="dropdown-item" (click)="markAllComplete(true)">Mark all complete</a>
+            <a class="dropdown-item" (click)="markAllComplete(false)">Mark all incomplete</a>
             <a class="dropdown-item" (click)="openConfirmClearTasksModal()">Clear</a>
             <a class="dropdown-item" (click)="refresh()">Refresh</a>
           </li>
