@@ -1,0 +1,7 @@
+<div style="padding: 1rem;">
+    <h4>Migrate</h4>
+    <span>Select a day to which to migrate tasks.</span>
+    <div class="mt-3">
+        <button *ngFor="let day of days" class="btn btn-light w-100 mt-1" (click)="selectDay(day.num)">{{ day.text }}</button>
+    </div>
+</div>

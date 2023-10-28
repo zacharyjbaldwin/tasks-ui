@@ -18,6 +18,10 @@ export class AppComponent implements OnInit {
     return date < 0 ? date += 7 : date;
   }
 
+  refreshAllNoSpinner(): void {
+    this.taskGroups?.forEach(taskGroup => taskGroup.getTasks());
+  }
+
   ngOnInit(): void {
     for (let i = this.today; i < this.today + 7; i++) {
       this.displayDays.push(this.days[(i + 7) % 7]);

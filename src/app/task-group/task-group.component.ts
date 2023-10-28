@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmClearModalComponent } from '../modals/confirm-clear-modal/confirm-clear-modal.component';
@@ -6,6 +6,7 @@ import { Task } from '../models/task.model';
 import { TaskService } from '../services/task.service';
 import { Day } from '../shared/day.enum';
 import { TaskGroupItemComponent } from './task-group-item/task-group-item.component'
+import { SelectMigrationDayModalComponent } from '../modals/select-migration-day-modal/select-migration-day-modal.component';
 
 @Component({
   selector: 'task-group',
@@ -15,6 +16,7 @@ import { TaskGroupItemComponent } from './task-group-item/task-group-item.compon
 export class TaskGroupComponent implements OnInit {
   @Input() day: Day = 0;
   @Input() hideContent: boolean = false;
+  @Output() refreshAll = new EventEmitter();
   @ViewChildren(TaskGroupItemComponent) public taskGroupItems!: QueryList<TaskGroupItemComponent>
 
   public completedAll: boolean = false;
@@ -89,8 +91,19 @@ export class TaskGroupComponent implements OnInit {
 
   public markAllComplete(complete: boolean): void {
     for (let item of this.taskGroupItems) {
-      item.updateTask(item.task._id!, complete, item.task.description);
+      item.updateTask(item.task._id!, complete, item.task.description, item.task.day);
     }
   }
 
+  public openDaySelector(excludeComplete?: boolean): void {
+    this.modal = this.modalService.show(SelectMigrationDayModalComponent);
+    (this.modal.content as SelectMigrationDayModalComponent).daySelected.subscribe(day => {
+      for (let task of excludeComplete ? this.tasks.filter(z => !z.completed) : this.tasks) {
+        this.taskService.updateTask(task._id!, task.completed!, task.description, day).subscribe({
+          next: () => this.refreshAll.emit(),
+          error: () => this.toastr.error('Failed to migrate tasks. Please try again later.')
+        });
+      }
+    });
+  }
 }

@@ -21,8 +21,8 @@ export class TaskService {
       .pipe(map((response) => { return { count: response.count, tasks: response.tasks } }));
   }
 
-  public updateTask(taskId: string, status: boolean, description: string) {
-    return this.http.put(`${environment.apiUrl}/api/task/${taskId}`, { completed: status, description: description });
+  public updateTask(taskId: string, status: boolean, description: string, day: Day) {
+    return this.http.put(`${environment.apiUrl}/api/task/${taskId}`, { completed: status, description, day });
   }
 
   public deleteTask(taskId: string) {

@@ -15,6 +15,7 @@ import { ConfirmDeleteModalComponent } from './modals/confirm-delete-modal/confi
 import { ConfirmClearModalComponent } from './modals/confirm-clear-modal/confirm-clear-modal.component';
 import { EditTaskModalComponent } from './modals/edit-task-modal/edit-task-modal.component';
 import { AddEditTaskModalComponent } from './modals/add-edit-task-modal/add-edit-task-modal.component';
+import { SelectMigrationDayModalComponent } from './modals/select-migration-day-modal/select-migration-day-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AddEditTaskModalComponent } from './modals/add-edit-task-modal/add-edit
     ConfirmDeleteModalComponent,
     ConfirmClearModalComponent,
     EditTaskModalComponent,
-    AddEditTaskModalComponent
+    AddEditTaskModalComponent,
+    SelectMigrationDayModalComponent
   ],
   imports: [
     BrowserModule,

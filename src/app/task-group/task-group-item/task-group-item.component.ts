@@ -50,9 +50,9 @@ export class TaskGroupItemComponent implements OnInit {
     this.editTaskModal = this.modalService.show(AddEditTaskModalComponent, { initialState: { mode: 'edit', task: task } });
   }
 
-  public updateTask(taskId: string, status: boolean, description: string): void {
+  public updateTask(taskId: string, status: boolean, description: string, day: number): void {
     this.loading = true;
-    this.taskService.updateTask(taskId, status, description).subscribe({
+    this.taskService.updateTask(taskId, status, description, day).subscribe({
       next: () => {
         this.getTasks.emit();
         this.loading = false;

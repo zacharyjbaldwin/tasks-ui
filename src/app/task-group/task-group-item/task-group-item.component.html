@@ -3,7 +3,7 @@
     <i class="fa-solid fa-gear spinner"></i>
 </div>
 <div *ngIf="!loading" class="task-group-item d-flex justify-content-between align-items-center">
-    <span class="task-description" [ngClass]="{ 'text-muted': task.completed == true, 'completed': task.completed == true }" (click)="updateTask(task._id!, !task.completed, task.description)">{{ task.description }}</span>
+    <span class="task-description" [ngClass]="{ 'text-muted': task.completed == true, 'completed': task.completed == true }" (click)="updateTask(task._id!, !task.completed, task.description, task.day)">{{ task.description }}</span>
     <div class="d-flex align-items-center justify-content-end" style="gap: 8px">
         <!-- <i class="fa-solid fa-pen-to-square" (click)="openEditModal(task)"></i> -->
         <i class="fa-solid fa-times" (click)="deleteTask(task)"></i>

@@ -12,9 +12,11 @@
         </button>
         <ul *dropdownMenu class="dropdown-menu">
           <li>
-            <a class="dropdown-item" (click)="markAllComplete(true)">Mark all complete</a>
-            <a class="dropdown-item" (click)="markAllComplete(false)">Mark all incomplete</a>
-            <a class="dropdown-item" (click)="openConfirmClearTasksModal()">Clear</a>
+            <a class="dropdown-item" [class.disabled]="taskCount == 0" (click)="markAllComplete(true)">Mark all complete</a>
+            <a class="dropdown-item" [class.disabled]="taskCount == 0" (click)="markAllComplete(false)">Mark all incomplete</a>
+            <a class="dropdown-item" [class.disabled]="taskCount == 0" (click)="openDaySelector(false)">Migrate all</a>
+            <a class="dropdown-item" [class.disabled]="taskCount == 0" (click)="openDaySelector(true)">Migrate incomplete</a>
+            <a class="dropdown-item" [class.disabled]="taskCount == 0" (click)="openConfirmClearTasksModal()">Clear</a>
             <a class="dropdown-item" (click)="refresh()">Refresh</a>
           </li>
         </ul>
