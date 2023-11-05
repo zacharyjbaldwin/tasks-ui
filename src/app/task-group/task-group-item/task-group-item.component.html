@@ -6,6 +6,10 @@
     <span class="task-description" [ngClass]="{ 'text-muted': task.completed == true, 'completed': task.completed == true }" (click)="updateTask(task._id!, !task.completed, task.description, task.day)">{{ task.description }}</span>
     <div class="d-flex align-items-center justify-content-end" style="gap: 8px">
         <!-- <i class="fa-solid fa-pen-to-square" (click)="openEditModal(task)"></i> -->
+        <!-- <i class="fa-solid fa-times"></i> -->
+        <!-- <i class="fa-solid fa-right-long"></i> -->
+        <!-- <i class="fa-solid fa-calendar-days"></i> -->
+        <i class="fa-solid fa-angles-right" (click)="migrateTask(task)"></i>
         <i class="fa-solid fa-times" (click)="deleteTask(task)"></i>
     </div>
 </div>

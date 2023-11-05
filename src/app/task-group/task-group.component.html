@@ -38,7 +38,7 @@
       <ng-template #noError>
         <div *ngIf="taskCount > 0" class="d-flex flex-column">
           <div *ngFor="let task of tasks">
-            <task-group-item [task]="task" (getTasks)="getTasks()"></task-group-item>
+            <task-group-item [task]="task" (getTasks)="getTasks()" (refreshTasksAll)="refreshAll.emit()"></task-group-item>
           </div>
         </div>
         <div *ngIf="taskCount == 0" class="d-flex justify-content-center">
