@@ -1,10 +1,28 @@
 <div>
   <div class="d-flex justify-content-between align-items-center">
-    <div class="d-flex justify-content-between align-items-baseline" style="gap: 8px;">
-      <h5 (click)="toggleContentHidden()">{{ header }}</h5>
-      <h6 *ngIf="!loading" [ngClass]="{ 'text-muted': !completedAll, 'task-group-complete' : completedAll }">({{ completedCount }} / {{ taskCount }})</h6>
+    <div
+      class="d-flex justify-content-between align-items-baseline"
+      style="gap: 8px"
+    >
+      <h5 (click)="toggleContentHidden()">
+        <span class="d-xl-none">{{ header }}</span>
+        <span class="d-none d-xl-block">{{ header.substring(0, 3) }}</span>
+      </h5>
+      <h6
+        class="d-md-none"
+        *ngIf="!loading"
+        [ngClass]="{
+          'text-muted': !completedAll,
+          'task-group-complete': completedAll
+        }"
+      >
+        ({{ completedCount }} / {{ taskCount }})
+      </h6>
     </div>
-    <div class="d-flex justify-content-end align-items-center" style="gap: 16px">
+    <div
+      class="d-flex justify-content-end align-items-center"
+      style="gap: 16px"
+    >
       <div class="btn-group" dropdown [isDisabled]="loading">
         <button class="btn btn-sm btn-light" dropdownToggle>
           Actions
@@ -12,39 +30,75 @@
         </button>
         <ul *dropdownMenu class="dropdown-menu">
           <li>
-            <a class="dropdown-item" [class.disabled]="taskCount == 0" (click)="markAllComplete(true)">Mark all complete</a>
-            <a class="dropdown-item" [class.disabled]="taskCount == 0" (click)="markAllComplete(false)">Mark all incomplete</a>
-            <a class="dropdown-item" [class.disabled]="taskCount == 0" (click)="openDaySelector(false)">Migrate all</a>
-            <a class="dropdown-item" [class.disabled]="taskCount == 0" (click)="openDaySelector(true)">Migrate incomplete</a>
-            <a class="dropdown-item" [class.disabled]="taskCount == 0" (click)="openConfirmClearTasksModal()">Clear</a>
+            <a
+              class="dropdown-item"
+              [class.disabled]="taskCount == 0"
+              (click)="markAllComplete(true)"
+              >Mark all complete</a
+            >
+            <a
+              class="dropdown-item"
+              [class.disabled]="taskCount == 0"
+              (click)="markAllComplete(false)"
+              >Mark all incomplete</a
+            >
+            <a
+              class="dropdown-item"
+              [class.disabled]="taskCount == 0"
+              (click)="openDaySelector(false)"
+              >Migrate all</a
+            >
+            <a
+              class="dropdown-item"
+              [class.disabled]="taskCount == 0"
+              (click)="openDaySelector(true)"
+              >Migrate incomplete</a
+            >
+            <a
+              class="dropdown-item"
+              [class.disabled]="taskCount == 0"
+              (click)="openConfirmClearTasksModal()"
+              >Clear</a
+            >
             <a class="dropdown-item" (click)="refresh()">Refresh</a>
           </li>
         </ul>
       </div>
-      <i class="fa-solid" [ngClass]="{ 'fa-chevron-down': !hideContent, 'fa-chevron-up': hideContent }" (click)="toggleContentHidden()"></i>
+      <i
+        class="fa-solid"
+        [ngClass]="{
+          'fa-chevron-down': !hideContent,
+          'fa-chevron-up': hideContent
+        }"
+        (click)="toggleContentHidden()"
+      ></i>
     </div>
   </div>
-  <hr>
+  <hr />
   <div id="content" [collapse]="hideContent" [isAnimated]="true">
     <div *ngIf="loading" class="d-flex justify-content-center">
       <loading-spinner></loading-spinner>
     </div>
     <div *ngIf="!loading">
       <div *ngIf="error; else noError">
-        <div class="alert alert-danger">
-          Failed to load tasks.
-        </div>
+        <div class="alert alert-danger">Failed to load tasks.</div>
       </div>
       <ng-template #noError>
         <div *ngIf="taskCount > 0" class="d-flex flex-column">
           <div *ngFor="let task of tasks">
-            <task-group-item [task]="task" (getTasks)="getTasks()" (refreshTasksAll)="refreshAll.emit()"></task-group-item>
+            <task-group-item
+              [task]="task"
+              (getTasks)="getTasks()"
+              (refreshTasksAll)="refreshAll.emit()"
+            ></task-group-item>
           </div>
         </div>
         <div *ngIf="taskCount == 0" class="d-flex justify-content-center">
           <span class="text-muted">No tasks.</span>
         </div>
-        <button class="btn btn-light full-width mt-3" (click)="addTask()"><i class="fa-solid fa-plus"></i> Add Task</button>
+        <button class="btn btn-light full-width mt-3" (click)="addTask()">
+          <i class="fa-solid fa-plus"></i> Add Task
+        </button>
       </ng-template>
     </div>
   </div>
